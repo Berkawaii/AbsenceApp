@@ -1,16 +1,66 @@
-# React + Vite
+# 🗓️ İzinTakip (Absence Tracker)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Premium tasarımlı, gerçek zamanlı senkronize olabilen ve herhangi bir sunucu (backend) yönetimi gerektirmeyen modern bir izin takip uygulaması.
 
-Currently, two official plugins are available:
+![Premium UI](https://img.shields.io/badge/UI-Glassmorphism-blueviolet)
+![React](https://img.shields.io/badge/Frontend-React%20+%20Vite-61DAFB)
+![Firebase](https://img.shields.io/badge/Database-Firebase%20Firestore-FFCA28)
+![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Actions-2088FF)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Özellikler
 
-## React Compiler
+- **Bulut Senkronizasyonu (Firebase)**: Veriler tüm cihazlar arasında anlık olarak senkronize edilir.
+- **Yönetici Modu (Güvenlik)**: İzin eklemek/silmek veya kullanıcı yönetmek için şifre korumalı (varsayılan: `1234`) admin paneli.
+- **Dinamik Kullanıcı Yönetimi**: Uygulama içinden yeni kişiler ekleyebilir, renklerini ve isimlerini değiştirebilirsiniz.
+- **Resmi Tatil Entegrasyonu**: Türkiye resmi ve dini tatilleri (2024-2026) otomatik olarak takvimde işaretlenir.
+- **Premium Tasarım**: Göz yormayan, modern ve şık Glassmorphism teması.
+- **Mobil Uyumlu**: Tüm cihazlarda sorunsuz çalışan responsive grid yapısı.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Teknoloji Yığını
 
-## Expanding the ESLint configuration
+- **React + Vite**: Hızlı ve modern frontend geliştirme.
+- **Firebase Firestore**: Gerçek zamanlı NoSQL veritabanı.
+- **Firebase Auth**: Anonim oturum açma ile güvenli veri yazma.
+- **GitHub Actions**: Otomatik CI/CD (Build & Deploy) süreçleri.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Hızlı Başlangıç
+
+### Yerel Kurulum
+
+1. Depoyu klonlayın:
+   ```bash
+   git clone https://github.com/Berkawaii/AbsenceApp.git
+   cd AbsenceApp
+   ```
+
+2. Bağımlılıkları yükleyin:
+   ```bash
+   npm install
+   ```
+
+3. `.env` dosyasını oluşturun:
+   `.env.example` dosyasını kopyalayıp `.env` adında yeni bir dosya oluşturun ve Firebase bilgilerinizi girin.
+
+4. Uygulamayı başlatın:
+   ```bash
+   npm run dev
+   ```
+
+## 🔒 Güvenlik Notu
+
+Veritabanı güvenliği için Firebase Firestore kurallarının şu şekilde ayarlanması önerilir:
+```javascript
+match /databases/{database}/documents {
+  match /{document=**} {
+    allow read: if true;
+    allow write: if request.auth != null;
+  }
+}
+```
+
+## 📄 Lisans
+
+Bu proje kişisel kullanım ve takip amaçlı geliştirilmiştir.
+
+---
+© 2026 İzinTakip - Developed with ❤️
