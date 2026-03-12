@@ -29,7 +29,13 @@ function App() {
       </header>
 
       <main style={{ padding: '0 2rem', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Calendar />
+         {!absences.length && !users.length && (
+           <div className="glass-card" style={{ padding: '1rem', marginTop: '2rem', textAlign: 'center' }}>
+             <p>Veriler yükleniyor veya Firebase yapılandırması eksik...</p>
+             <p style={{ fontSize: '0.8rem', opacity: 0.7 }}>Not: GitHub Secrets'ları eklediğinizden emin olun.</p>
+           </div>
+         )}
+         <Calendar />
       </main>
 
       <footer style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.875rem' }}>

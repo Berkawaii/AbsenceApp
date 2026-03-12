@@ -12,6 +12,20 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+// Prevent crash if environment variables are missing (e.g., GitHub Secrets not set)
+let app;
+let db;
+let auth;
+
+try {
+  if (!firebaseConfig.apiKey) {
+    throw new Error("Firebase API Key is missing. Please check your .env file or GitHub Secrets.");
+  }
+  app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+  auth = getAuth(app);
+} catch (error) {
+  console.error("Firebase initialization failed:", error);
+}
+
+export { db, auth };

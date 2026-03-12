@@ -23,6 +23,7 @@ export const useAttendanceStore = () => {
 
   // Real-time listener for users
   useEffect(() => {
+    if (!db) return;
     const q = query(collection(db, 'users'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const usersData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -33,6 +34,7 @@ export const useAttendanceStore = () => {
 
   // Real-time listener for absences
   useEffect(() => {
+    if (!db) return;
     const q = query(collection(db, 'absences'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const absencesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -42,6 +44,7 @@ export const useAttendanceStore = () => {
   }, []);
 
   const toggleAbsence = async (userId, date) => {
+    if (!db) return;
     const q = query(collection(db, 'absences'), where('userId', '==', userId), where('date', '==', date));
     const snapshot = await getDocs(q);
     
